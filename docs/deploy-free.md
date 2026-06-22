@@ -137,9 +137,11 @@ curl -sS "https://YOUR-API.up.railway.app/ready"
 
 1. **Add New Project** → import the same GitHub repo.
 2. **Root Directory:** `apps/web` (required — do not deploy from repo root).
-3. **Node.js version:** 22 (matches `.nvmrc`; Vercel reads it from the repo when Root Directory is set).
-4. Vercel picks up `apps/web/vercel.json` (`installCommand` / `buildCommand` run from monorepo root via `cd ../..`).
-5. Environment variables (see also `apps/web/.env.example`):
+3. **Include source files outside of the Root Directory:** enable in Project Settings → General (required for `@beacon/shared` workspace).
+4. **Node.js version:** 22 (from `apps/web/.nvmrc` and `engines.node: "22.x"`).
+5. **Install Command:** leave empty in the Vercel dashboard so `apps/web/vercel.json` controls it (`npm ci --prefix=../..`). Do **not** set a duplicate install command in the UI.
+6. Vercel picks up `apps/web/vercel.json` for install/build.
+7. Environment variables (see also `apps/web/.env.example`):
 
 | Variable | Value |
 | -------- | ----- |
@@ -149,11 +151,16 @@ curl -sS "https://YOUR-API.up.railway.app/ready"
 | `CLERK_SECRET_KEY` | Clerk secret key |
 | `NODE_ENV` | `production` |
 
-6. Deploy.
+8. Deploy.
 
-7. Go back to Railway and set `CORS_ORIGIN` / `WEB_APP_URL` to the final Vercel URL if you used a placeholder earlier.
+9. Go back to Railway and set `CORS_ORIGIN` / `WEB_APP_URL` to the final Vercel URL if you used a placeholder earlier.
 
 **Pre-deploy check (local):** `make verify-vercel` simulates the Vercel install + build.
+
+**CLI deploy (monorepo):** run from the repo root, not from inside `apps/web`:
+```bash
+vercel --prod --cwd apps/web
+```
 
 ---
 
@@ -257,7 +264,8 @@ Free web services sleep when idle; free Postgres expires after 90 days — OK fo
 | 401 on all API calls | Clerk keys on Vercel + Railway; user synced via webhook |
 | Workers idle | `EVENT_WORKERS_ENABLED=true` on Railway |
 | No digests / risk refresh | `RISK_SCHEDULER_ENABLED` / `NOTIFICATION_SCHEDULER_ENABLED` = `true` |
-| Build fails on Vercel | Ensure root install runs (`vercel.json` `installCommand`); Node 22 in project settings |
+| Build fails on Vercel | Root Directory = `apps/web`; enable **Include files outside Root Directory**; clear Install Command override in dashboard; use `npm ci --prefix=../..` from `vercel.json` |
+| `Tracker "idealTree" already exists` | Duplicate install — remove custom Install Command in Vercel UI; push latest `vercel.json`; redeploy via Git or `vercel --prod --cwd apps/web` from repo root |
 | Build fails on Railway | Check `nixpacks.toml` / Node 22; run `npx turbo build --filter=@beacon/api` locally |
 
 ---

@@ -2,7 +2,7 @@
   "name": "@beacon/web",
   "version": "0.1.0",
   "engines": {
-    "node": ">=20.0.0"
+    "node": "22.x"
   },
   "scripts": {
     "dev": "next dev --port 3000",
