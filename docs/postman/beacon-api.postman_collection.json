@@ -1,0 +1,157 @@
+{
+  "info": {
+    "name": "Beacon API",
+    "description": "Sprint 10 MVP REST surface. Import and set collection variables: baseUrl (http://localhost:3001/v1), tenantId, bearerToken (dev:admin-a).",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    { "key": "baseUrl", "value": "http://localhost:3001/v1" },
+    { "key": "tenantId", "value": "REPLACE_WITH_TENANT_UUID" },
+    { "key": "bearerToken", "value": "dev:admin-a" },
+    { "key": "projectId", "value": "" },
+    { "key": "riskId", "value": "" }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [{ "key": "token", "value": "{{bearerToken}}", "type": "string" }]
+  },
+  "item": [
+    {
+      "name": "Health",
+      "item": [
+        {
+          "name": "GET /health",
+          "request": {
+            "auth": { "type": "noauth" },
+            "method": "GET",
+            "url": "http://localhost:3001/health"
+          }
+        },
+        {
+          "name": "GET /ready",
+          "request": {
+            "auth": { "type": "noauth" },
+            "method": "GET",
+            "url": "http://localhost:3001/ready"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Dashboard",
+      "item": [
+        {
+          "name": "GET /dashboard",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "x-tenant-id", "value": "{{tenantId}}" }],
+            "url": "{{baseUrl}}/dashboard"
+          }
+        },
+        {
+          "name": "GET /revenue-impact",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "x-tenant-id", "value": "{{tenantId}}" }],
+            "url": "{{baseUrl}}/revenue-impact"
+          }
+        },
+        {
+          "name": "GET /revenue-impact (CSV)",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "x-tenant-id", "value": "{{tenantId}}" }],
+            "url": "{{baseUrl}}/revenue-impact?format=csv"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Projects",
+      "item": [
+        {
+          "name": "GET /projects",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "x-tenant-id", "value": "{{tenantId}}" }],
+            "url": "{{baseUrl}}/projects?limit=20"
+          }
+        },
+        {
+          "name": "GET /projects (filtered)",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "x-tenant-id", "value": "{{tenantId}}" }],
+            "url": "{{baseUrl}}/projects?status=active&risk_level=high&owner=contributor-a@acme-demo.test"
+          }
+        },
+        {
+          "name": "GET /projects (CSV)",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "x-tenant-id", "value": "{{tenantId}}" }],
+            "url": "{{baseUrl}}/projects?format=csv"
+          }
+        },
+        {
+          "name": "GET /projects/:id (full)",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "x-tenant-id", "value": "{{tenantId}}" }],
+            "url": "{{baseUrl}}/projects/{{projectId}}?detail=full"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Risks",
+      "item": [
+        {
+          "name": "GET /risks",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "x-tenant-id", "value": "{{tenantId}}" }],
+            "url": "{{baseUrl}}/risks?limit=20"
+          }
+        },
+        {
+          "name": "GET /risks/:id",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "x-tenant-id", "value": "{{tenantId}}" }],
+            "url": "{{baseUrl}}/risks/{{riskId}}"
+          }
+        },
+        {
+          "name": "PATCH /risks/:id (acknowledge)",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              { "key": "x-tenant-id", "value": "{{tenantId}}" },
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Idempotency-Key", "value": "postman-risk-ack-{{$timestamp}}" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"status\": \"acknowledged\",\n  \"version\": 1\n}"
+            },
+            "url": "{{baseUrl}}/risks/{{riskId}}"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Docs",
+      "item": [
+        {
+          "name": "GET /openapi.json",
+          "request": {
+            "auth": { "type": "noauth" },
+            "method": "GET",
+            "url": "{{baseUrl}}/openapi.json"
+          }
+        }
+      ]
+    }
+  ]
+}

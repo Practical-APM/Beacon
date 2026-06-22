@@ -1,0 +1,53 @@
+{
+  "name": "@beacon/db",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./schema": {
+      "types": "./dist/schema/index.d.ts",
+      "import": "./dist/schema/index.js"
+    },
+    "./seed-demo-data": {
+      "types": "./dist/seed-demo-data.d.ts",
+      "import": "./dist/seed-demo-data.js"
+    },
+    "./seed-helpers": {
+      "types": "./dist/seed-helpers.d.ts",
+      "import": "./dist/seed-helpers.js"
+    },
+    "./seed-load-test-data": {
+      "types": "./dist/seed-load-test-data.d.ts",
+      "import": "./dist/seed-load-test-data.js"
+    }
+  },
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "typecheck": "tsc --noEmit",
+    "lint": "tsc --noEmit",
+    "test": "vitest run",
+    "clean": "rm -rf dist",
+    "db:generate": "drizzle-kit generate",
+    "db:migrate": "drizzle-kit migrate",
+    "db:seed": "tsx src/seed.ts",
+    "db:seed-load-test": "tsx src/seed-load-test.ts"
+  },
+  "dependencies": {
+    "@beacon/shared": "*",
+    "drizzle-orm": "^0.38.3",
+    "postgres": "^3.4.5"
+  },
+  "devDependencies": {
+    "drizzle-kit": "^0.30.1",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.2",
+    "vitest": "^2.1.8"
+  }
+}

@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 720" fill="none" role="img" aria-label="Beacon project intelligence screenshot">
+  <rect width="1200" height="720" fill="#F8FAFC"/>
+  <rect width="220" height="720" fill="#FFFFFF"/>
+  <line x1="220" y1="0" x2="220" y2="720" stroke="#E2E8F0"/>
+  <rect x="24" y="24" width="32" height="32" rx="8" fill="#0F766E"/>
+  <text x="64" y="46" fill="#0F172A" font-family="system-ui,sans-serif" font-size="16" font-weight="600">Beacon</text>
+  <text x="252" y="42" fill="#64748B" font-family="system-ui,sans-serif" font-size="14">Projects / Acme Corp</text>
+  <text x="252" y="78" fill="#0F172A" font-family="system-ui,sans-serif" font-size="28" font-weight="600">Acme Corp implementation</text>
+  <text x="252" y="108" fill="#64748B" font-family="system-ui,sans-serif" font-size="14">Target go-live Apr 28 - $45K ARR - Owner: Jordan Lee</text>
+  <rect x="252" y="136" width="360" height="120" rx="16" fill="#FFFFFF" stroke="#E2E8F0"/>
+  <rect x="628" y="136" width="392" height="120" rx="16" fill="#FFFFFF" stroke="#E2E8F0"/>
+  <text x="276" y="168" fill="#64748B" font-family="system-ui,sans-serif" font-size="13">Predicted delay</text>
+  <text x="276" y="208" fill="#D97706" font-family="system-ui,sans-serif" font-size="32" font-weight="600">12-18 days</text>
+  <text x="276" y="236" fill="#64748B" font-family="system-ui,sans-serif" font-size="13">80% confidence interval</text>
+  <text x="652" y="168" fill="#64748B" font-family="system-ui,sans-serif" font-size="13">On-time probability</text>
+  <text x="652" y="208" fill="#0F172A" font-family="system-ui,sans-serif" font-size="32" font-weight="600">34%</text>
+  <text x="652" y="236" fill="#64748B" font-family="system-ui,sans-serif" font-size="13">Based on open risks + peer cohort</text>
+  <rect x="252" y="276" width="768" height="220" rx="16" fill="#FFFFFF" stroke="#E2E8F0"/>
+  <text x="276" y="312" fill="#0F172A" font-family="system-ui,sans-serif" font-size="16" font-weight="600">Root cause analysis</text>
+  <text x="276" y="348" fill="#334155" font-family="system-ui,sans-serif" font-size="15">Customer security review has been inactive for 18 days while</text>
+  <text x="276" y="374" fill="#334155" font-family="system-ui,sans-serif" font-size="15">three Jira blockers remain open. Slack activity dropped 62% vs baseline.</text>
+  <rect x="276" y="396" width="720" height="72" rx="12" fill="#F8FAFC" stroke="#E2E8F0"/>
+  <text x="296" y="428" fill="#0F766E" font-family="system-ui,sans-serif" font-size="14" font-weight="600">Recommended action</text>
+  <text x="296" y="454" fill="#475569" font-family="system-ui,sans-serif" font-size="14">Schedule executive checkpoint with customer CISO within 5 business days.</text>
+  <rect x="252" y="516" width="768" height="160" rx="16" fill="#FFFFFF" stroke="#E2E8F0"/>
+  <text x="276" y="552" fill="#0F172A" font-family="system-ui,sans-serif" font-size="16" font-weight="600">Active risks</text>
+  <rect x="276" y="568" width="720" height="36" rx="8" fill="#FFFBEB"/>
+  <text x="292" y="592" fill="#92400E" font-family="system-ui,sans-serif" font-size="14">Security review stalled - High - Evidence from Jira + Slack</text>
+</svg>

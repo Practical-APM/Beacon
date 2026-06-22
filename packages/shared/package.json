@@ -1,0 +1,121 @@
+{
+  "name": "@beacon/shared",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./salesforce": {
+      "types": "./dist/salesforce.d.ts",
+      "import": "./dist/salesforce.js"
+    },
+    "./jira": {
+      "types": "./dist/jira.d.ts",
+      "import": "./dist/jira.js"
+    },
+    "./events": {
+      "types": "./dist/events.d.ts",
+      "import": "./dist/events.js"
+    },
+    "./graph": {
+      "types": "./dist/graph.d.ts",
+      "import": "./dist/graph.js"
+    },
+    "./api": {
+      "types": "./dist/api.d.ts",
+      "import": "./dist/api.js"
+    },
+    "./auth": {
+      "types": "./dist/auth.d.ts",
+      "import": "./dist/auth.js"
+    },
+    "./env": {
+      "types": "./dist/env.d.ts",
+      "import": "./dist/env.js"
+    },
+    "./constants": {
+      "types": "./dist/constants.d.ts",
+      "import": "./dist/constants.js"
+    },
+    "./notifications": {
+      "types": "./dist/notifications.d.ts",
+      "import": "./dist/notifications.js"
+    },
+    "./audit": {
+      "types": "./dist/audit.d.ts",
+      "import": "./dist/audit.js"
+    },
+    "./feature-flags": {
+      "types": "./dist/feature-flags.d.ts",
+      "import": "./dist/feature-flags.js"
+    },
+    "./privacy": {
+      "types": "./dist/privacy.d.ts",
+      "import": "./dist/privacy.js"
+    },
+    "./legal": {
+      "types": "./dist/legal.d.ts",
+      "import": "./dist/legal.js"
+    },
+    "./google-calendar": {
+      "types": "./dist/google-calendar.d.ts",
+      "import": "./dist/google-calendar.js"
+    },
+    "./outbound-webhooks": {
+      "types": "./dist/outbound-webhooks.d.ts",
+      "import": "./dist/outbound-webhooks.js"
+    },
+    "./recommendation-feedback": {
+      "types": "./dist/recommendation-feedback.d.ts",
+      "import": "./dist/recommendation-feedback.js"
+    },
+    "./risk-rules-ui": {
+      "types": "./dist/risk-rules-ui.d.ts",
+      "import": "./dist/risk-rules-ui.js"
+    },
+    "./i18n": {
+      "types": "./dist/i18n.d.ts",
+      "import": "./dist/i18n.js"
+    },
+    "./benchmarks": {
+      "types": "./dist/benchmarks.d.ts",
+      "import": "./dist/benchmarks.js"
+    },
+    "./delay-prediction": {
+      "types": "./dist/delay-prediction.d.ts",
+      "import": "./dist/delay-prediction.js"
+    },
+    "./currency-format": {
+      "types": "./dist/currency-format.d.ts",
+      "import": "./dist/currency-format.js"
+    },
+    "./revenue-totals": {
+      "types": "./dist/revenue-totals.d.ts",
+      "import": "./dist/revenue-totals.js"
+    },
+    "./integrations": {
+      "types": "./dist/integrations/index.d.ts",
+      "import": "./dist/integrations/index.js"
+    }
+  },
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "typecheck": "tsc --noEmit",
+    "lint": "tsc --noEmit",
+    "test": "vitest run",
+    "clean": "rm -rf dist"
+  },
+  "dependencies": {
+    "zod": "^3.24.1"
+  },
+  "devDependencies": {
+    "typescript": "^5.7.2",
+    "vitest": "^2.1.8"
+  }
+}
