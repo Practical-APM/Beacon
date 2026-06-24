@@ -2,6 +2,6 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "framework": "nextjs",
   "installCommand": "npm ci --prefix=../..",
-  "buildCommand": "cd ../.. && npx turbo build --filter=@beacon/web",
+  "buildCommand": "bash ./vercel-build.sh",
   "regions": ["iad1"]
 }

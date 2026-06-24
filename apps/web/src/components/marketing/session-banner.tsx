@@ -20,9 +20,9 @@ export function SessionBanner() {
   if (!visible) return null;
 
   return (
-    <div className="border-b border-teal-200 bg-teal-50">
+    <div className="border-b border-[var(--m-border)] bg-[var(--m-accent-soft)]">
       <div className="mx-auto flex max-w-6xl items-center justify-between gap-3 px-5 py-3 sm:px-6">
-        <p className="text-sm text-teal-900">You are signed in. Jump back into your workspace.</p>
+        <p className="text-sm text-[var(--m-text)]">You are signed in. Jump back into your workspace.</p>
         <div className="flex items-center gap-2">
           <Link
             href="/dashboard"
@@ -32,7 +32,7 @@ export function SessionBanner() {
           </Link>
           <button
             type="button"
-            className="rounded-lg p-2 text-teal-700 transition hover:bg-teal-100"
+            className="rounded-lg p-2 text-[var(--m-accent)] transition hover:bg-[var(--m-surface)]"
             aria-label="Dismiss signed-in banner"
             onClick={() => {
               window.sessionStorage.setItem(DISMISS_KEY, '1');

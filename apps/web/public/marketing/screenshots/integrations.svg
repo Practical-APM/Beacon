@@ -1,32 +1,142 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 720" fill="none" role="img" aria-label="Beacon integrations screenshot">
-  <rect width="1200" height="720" fill="#F8FAFC"/>
-  <rect width="220" height="720" fill="#FFFFFF"/>
-  <line x1="220" y1="0" x2="220" y2="720" stroke="#E2E8F0"/>
-  <rect x="24" y="24" width="32" height="32" rx="8" fill="#0F766E"/>
-  <text x="64" y="46" fill="#0F172A" font-family="system-ui,sans-serif" font-size="16" font-weight="600">Beacon</text>
-  <text x="252" y="42" fill="#0F172A" font-family="system-ui,sans-serif" font-size="22" font-weight="600">Connections</text>
-  <text x="252" y="68" fill="#64748B" font-family="system-ui,sans-serif" font-size="14">Connect your stack in minutes. OAuth only, no rip-and-replace.</text>
-  <rect x="252" y="104" width="360" height="180" rx="16" fill="#FFFFFF" stroke="#E2E8F0"/>
-  <rect x="628" y="104" width="360" height="180" rx="16" fill="#FFFFFF" stroke="#E2E8F0"/>
-  <rect x="252" y="304" width="360" height="180" rx="16" fill="#FFFFFF" stroke="#E2E8F0"/>
-  <rect x="628" y="304" width="360" height="180" rx="16" fill="#FFFFFF" stroke="#E2E8F0"/>
-  <circle cx="292" cy="152" r="24" fill="#EEF2FF"/>
-  <text x="324" y="148" fill="#0F172A" font-family="system-ui,sans-serif" font-size="18" font-weight="600">Salesforce</text>
-  <rect x="324" y="160" width="88" height="24" rx="12" fill="#DCFCE7"/>
-  <text x="340" y="177" fill="#166534" font-family="system-ui,sans-serif" font-size="12" font-weight="600">Connected</text>
-  <circle cx="668" cy="152" r="24" fill="#EFF6FF"/>
-  <text x="700" y="148" fill="#0F172A" font-family="system-ui,sans-serif" font-size="18" font-weight="600">Jira</text>
-  <rect x="700" y="160" width="88" height="24" rx="12" fill="#DCFCE7"/>
-  <text x="716" y="177" fill="#166534" font-family="system-ui,sans-serif" font-size="12" font-weight="600">Connected</text>
-  <circle cx="292" cy="352" r="24" fill="#F8FAFC"/>
-  <text x="324" y="348" fill="#0F172A" font-family="system-ui,sans-serif" font-size="18" font-weight="600">Slack</text>
-  <rect x="324" y="360" width="88" height="24" rx="12" fill="#DCFCE7"/>
-  <text x="340" y="377" fill="#166534" font-family="system-ui,sans-serif" font-size="12" font-weight="600">Connected</text>
-  <circle cx="668" cy="352" r="24" fill="#F0FDF4"/>
-  <text x="700" y="348" fill="#0F172A" font-family="system-ui,sans-serif" font-size="18" font-weight="600">Google Calendar</text>
-  <rect x="700" y="360" width="88" height="24" rx="12" fill="#DCFCE7"/>
-  <text x="716" y="377" fill="#166534" font-family="system-ui,sans-serif" font-size="12" font-weight="600">Connected</text>
-  <rect x="252" y="516" width="736" height="120" rx="16" fill="#F0FDFA" stroke="#99F6E4"/>
-  <text x="276" y="556" fill="#0F766E" font-family="system-ui,sans-serif" font-size="16" font-weight="600">All integrations healthy</text>
-  <text x="276" y="584" fill="#475569" font-family="system-ui,sans-serif" font-size="14">Last sync 4 minutes ago - Continuous signal evaluation active</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="720" viewBox="0 0 1200 720" fill="none" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Beacon integrations connections screenshot">
+  <defs>
+    <linearGradient id="int-sidebar" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0c1222"/>
+      <stop offset="100%" stop-color="#0f1a2e"/>
+    </linearGradient>
+    <clipPath id="int-viewport">
+      <rect width="1200" height="720"/>
+    </clipPath>
+  </defs>
+
+  <g clip-path="url(#int-viewport)">
+    <rect width="1200" height="720" fill="#f0f4f8"/>
+
+    <!-- Sidebar -->
+    <rect width="220" height="720" fill="url(#int-sidebar)"/>
+    <rect x="0" y="0" width="3" height="720" fill="#0d9488" opacity="0.85"/>
+    <rect x="18" y="22" width="36" height="36" rx="10" fill="#0d9488"/>
+    <text x="30" y="46" fill="#fff" font-family="system-ui,sans-serif" font-size="18" font-weight="700">B</text>
+    <text x="62" y="36" fill="#fff" font-family="system-ui,sans-serif" font-size="14" font-weight="700">Beacon</text>
+    <text x="62" y="52" fill="#94a3b8" font-family="system-ui,sans-serif" font-size="10">Risk Intelligence</text>
+
+    <text x="40" y="105" fill="#94a3b8" font-family="system-ui,sans-serif" font-size="13">Portfolio</text>
+    <rect x="12" y="118" width="196" height="36" rx="8" fill="#0d9488" fill-opacity="0.18"/>
+    <text x="40" y="141" fill="#5eead4" font-family="system-ui,sans-serif" font-size="13" font-weight="600">Connections</text>
+    <text x="40" y="174" fill="#94a3b8" font-family="system-ui,sans-serif" font-size="13">Settings</text>
+
+    <rect x="16" y="206" width="188" height="56" rx="10" fill="#132033" stroke="#1e293b"/>
+    <text x="28" y="226" fill="#10b981" font-family="system-ui,sans-serif" font-size="11" font-weight="600">Core stack connected</text>
+    <rect x="28" y="236" width="164" height="6" rx="3" fill="#0f2a20"/>
+    <rect x="28" y="236" width="148" height="6" rx="3" fill="#0d9488"/>
+    <text x="28" y="254" fill="#64748b" font-family="system-ui,sans-serif" font-size="10">3 of 4 integrations active</text>
+
+    <!-- Main -->
+    <rect x="220" y="0" width="980" height="720" fill="#f8fafc"/>
+    <rect x="220" y="0" width="980" height="64" fill="#fff"/>
+    <line x1="220" y1="64" x2="1200" y2="64" stroke="#e2e8f0"/>
+
+    <text x="244" y="30" fill="#94a3b8" font-family="system-ui,sans-serif" font-size="11">Settings / Connections</text>
+    <text x="244" y="52" fill="#0f172a" font-family="system-ui,sans-serif" font-size="20" font-weight="700">Connect your stack</text>
+    <rect x="1048" y="16" width="128" height="32" rx="10" fill="#0d9488"/>
+    <text x="1072" y="37" fill="#fff" font-family="system-ui,sans-serif" font-size="12" font-weight="600">Add source</text>
+
+    <text x="244" y="86" fill="#64748b" font-family="system-ui,sans-serif" font-size="13">OAuth in minutes. Connect Salesforce, Jira, Slack, and Google Calendar.</text>
+
+    <!-- Integration cards -->
+    <g>
+      <rect x="244" y="104" width="448" height="176" rx="16" fill="#f0f9ff" stroke="#bae6fd"/>
+      <rect x="244" y="104" width="448" height="4" rx="2" fill="#0ea5e9"/>
+      <rect x="262" y="124" width="48" height="48" rx="12" fill="#0ea5e9" fill-opacity="0.15"/>
+      <text x="278" y="154" fill="#0ea5e9" font-family="system-ui,sans-serif" font-size="22" font-weight="700">SF</text>
+      <text x="322" y="142" fill="#0f172a" font-family="system-ui,sans-serif" font-size="16" font-weight="700">Salesforce</text>
+      <text x="322" y="160" fill="#64748b" font-family="system-ui,sans-serif" font-size="12">CRM · Opportunities · ARR</text>
+      <rect x="580" y="124" width="92" height="26" rx="13" fill="#dcfce7" stroke="#86efac"/>
+      <circle cx="594" cy="137" r="5" fill="#16a34a"/>
+      <text x="604" y="142" fill="#15803d" font-family="system-ui,sans-serif" font-size="12" font-weight="700">Connected</text>
+      <line x1="262" y1="184" x2="672" y2="184" stroke="#bae6fd"/>
+      <text x="262" y="206" fill="#64748b" font-family="system-ui,sans-serif" font-size="11">Records</text>
+      <text x="262" y="224" fill="#0f172a" font-family="system-ui,sans-serif" font-size="15" font-weight="700">2,847</text>
+      <text x="380" y="206" fill="#64748b" font-family="system-ui,sans-serif" font-size="11">Last sync</text>
+      <text x="380" y="224" fill="#0f172a" font-family="system-ui,sans-serif" font-size="15" font-weight="700">3 min ago</text>
+      <rect x="262" y="244" width="88" height="28" rx="8" fill="#fff" stroke="#bae6fd"/>
+      <text x="286" y="263" fill="#0ea5e9" font-family="system-ui,sans-serif" font-size="12" font-weight="600">Re-sync</text>
+    </g>
+
+    <g>
+      <rect x="708" y="104" width="448" height="176" rx="16" fill="#eef2ff" stroke="#c7d2fe"/>
+      <rect x="708" y="104" width="448" height="4" rx="2" fill="#4f46e5"/>
+      <rect x="726" y="124" width="48" height="48" rx="12" fill="#4f46e5" fill-opacity="0.15"/>
+      <text x="742" y="154" fill="#4f46e5" font-family="system-ui,sans-serif" font-size="22" font-weight="700">Ji</text>
+      <text x="786" y="142" fill="#0f172a" font-family="system-ui,sans-serif" font-size="16" font-weight="700">Jira</text>
+      <text x="786" y="160" fill="#64748b" font-family="system-ui,sans-serif" font-size="12">Work items · Epics · Sprints</text>
+      <rect x="1044" y="124" width="92" height="26" rx="13" fill="#dcfce7" stroke="#86efac"/>
+      <circle cx="1058" cy="137" r="5" fill="#16a34a"/>
+      <text x="1068" y="142" fill="#15803d" font-family="system-ui,sans-serif" font-size="12" font-weight="700">Connected</text>
+      <line x1="726" y1="184" x2="1136" y2="184" stroke="#c7d2fe"/>
+      <text x="726" y="206" fill="#64748b" font-family="system-ui,sans-serif" font-size="11">Projects linked</text>
+      <text x="726" y="224" fill="#0f172a" font-family="system-ui,sans-serif" font-size="15" font-weight="700">24</text>
+      <text x="860" y="206" fill="#64748b" font-family="system-ui,sans-serif" font-size="11">Last sync</text>
+      <text x="860" y="224" fill="#0f172a" font-family="system-ui,sans-serif" font-size="15" font-weight="700">1 min ago</text>
+      <rect x="726" y="244" width="88" height="28" rx="8" fill="#fff" stroke="#c7d2fe"/>
+      <text x="750" y="263" fill="#4f46e5" font-family="system-ui,sans-serif" font-size="12" font-weight="600">Re-sync</text>
+    </g>
+
+    <g>
+      <rect x="244" y="296" width="448" height="176" rx="16" fill="#f5f3ff" stroke="#ddd6fe"/>
+      <rect x="244" y="296" width="448" height="4" rx="2" fill="#7c3aed"/>
+      <rect x="262" y="316" width="48" height="48" rx="12" fill="#7c3aed" fill-opacity="0.15"/>
+      <text x="280" y="346" fill="#7c3aed" font-family="system-ui,sans-serif" font-size="22" font-weight="700">#</text>
+      <text x="322" y="334" fill="#0f172a" font-family="system-ui,sans-serif" font-size="16" font-weight="700">Slack</text>
+      <text x="322" y="352" fill="#64748b" font-family="system-ui,sans-serif" font-size="12">Channels · Messages</text>
+      <rect x="580" y="316" width="92" height="26" rx="13" fill="#dcfce7" stroke="#86efac"/>
+      <circle cx="594" cy="329" r="5" fill="#16a34a"/>
+      <text x="604" y="334" fill="#15803d" font-family="system-ui,sans-serif" font-size="12" font-weight="700">Connected</text>
+      <line x1="262" y1="376" x2="672" y2="376" stroke="#ddd6fe"/>
+      <text x="262" y="398" fill="#64748b" font-family="system-ui,sans-serif" font-size="11">Channels monitored</text>
+      <text x="262" y="416" fill="#0f172a" font-family="system-ui,sans-serif" font-size="15" font-weight="700">18</text>
+      <text x="380" y="398" fill="#64748b" font-family="system-ui,sans-serif" font-size="11">Signals captured</text>
+      <text x="380" y="416" fill="#0f172a" font-family="system-ui,sans-serif" font-size="15" font-weight="700">492</text>
+      <rect x="262" y="436" width="88" height="28" rx="8" fill="#fff" stroke="#ddd6fe"/>
+      <text x="286" y="455" fill="#7c3aed" font-family="system-ui,sans-serif" font-size="12" font-weight="600">Re-sync</text>
+    </g>
+
+    <g>
+      <rect x="708" y="296" width="448" height="176" rx="16" fill="#f0fdf4" stroke="#bbf7d0"/>
+      <rect x="708" y="296" width="448" height="4" rx="2" fill="#16a34a"/>
+      <rect x="726" y="316" width="48" height="48" rx="12" fill="#16a34a" fill-opacity="0.15"/>
+      <rect x="740" y="330" width="20" height="18" rx="3" fill="#16a34a" fill-opacity="0.25" stroke="#16a34a"/>
+      <text x="786" y="334" fill="#0f172a" font-family="system-ui,sans-serif" font-size="16" font-weight="700">Google Calendar</text>
+      <text x="786" y="352" fill="#64748b" font-family="system-ui,sans-serif" font-size="12">Meetings · Engagement</text>
+      <rect x="1044" y="316" width="92" height="26" rx="13" fill="#dcfce7" stroke="#86efac"/>
+      <circle cx="1058" cy="329" r="5" fill="#16a34a"/>
+      <text x="1068" y="334" fill="#15803d" font-family="system-ui,sans-serif" font-size="12" font-weight="700">Connected</text>
+      <line x1="726" y1="376" x2="1136" y2="376" stroke="#bbf7d0"/>
+      <text x="726" y="398" fill="#64748b" font-family="system-ui,sans-serif" font-size="11">Meetings tracked</text>
+      <text x="726" y="416" fill="#0f172a" font-family="system-ui,sans-serif" font-size="15" font-weight="700">324</text>
+      <text x="860" y="398" fill="#64748b" font-family="system-ui,sans-serif" font-size="11">Last sync</text>
+      <text x="860" y="416" fill="#0f172a" font-family="system-ui,sans-serif" font-size="15" font-weight="700">5 min ago</text>
+      <rect x="726" y="436" width="88" height="28" rx="8" fill="#fff" stroke="#bbf7d0"/>
+      <text x="750" y="455" fill="#16a34a" font-family="system-ui,sans-serif" font-size="12" font-weight="600">Re-sync</text>
+    </g>
+
+    <!-- Roadmap -->
+    <rect x="244" y="492" width="912" height="196" rx="16" fill="#f8fafc" stroke="#e2e8f0" stroke-dasharray="6 4"/>
+    <text x="264" y="522" fill="#64748b" font-family="system-ui,sans-serif" font-size="13" font-weight="700">On the roadmap</text>
+    <rect x="264" y="538" width="88" height="28" rx="14" fill="#fff" stroke="#e2e8f0"/>
+    <text x="280" y="557" fill="#64748b" font-family="system-ui,sans-serif" font-size="12">HubSpot</text>
+    <rect x="362" y="538" width="104" height="28" rx="14" fill="#fff" stroke="#e2e8f0"/>
+    <text x="378" y="557" fill="#64748b" font-family="system-ui,sans-serif" font-size="12">Dynamics 365</text>
+    <rect x="476" y="538" width="80" height="28" rx="14" fill="#fff" stroke="#e2e8f0"/>
+    <text x="492" y="557" fill="#64748b" font-family="system-ui,sans-serif" font-size="12">Pipedrive</text>
+    <rect x="566" y="538" width="64" height="28" rx="14" fill="#fff" stroke="#e2e8f0"/>
+    <text x="582" y="557" fill="#64748b" font-family="system-ui,sans-serif" font-size="12">Linear</text>
+    <rect x="640" y="538" width="124" height="28" rx="14" fill="#fff" stroke="#e2e8f0"/>
+    <text x="656" y="557" fill="#64748b" font-family="system-ui,sans-serif" font-size="12">Microsoft Teams</text>
+
+    <rect x="264" y="586" width="872" height="44" rx="10" fill="#f0fdf4" stroke="#86efac"/>
+    <circle cx="282" cy="608" r="7" fill="#16a34a"/>
+    <text x="296" y="613" fill="#15803d" font-family="system-ui,sans-serif" font-size="13" font-weight="600">All systems operational</text>
+    <text x="470" y="613" fill="#64748b" font-family="system-ui,sans-serif" font-size="12">Last checked 60s ago · 99.9% uptime (30d)</text>
+  </g>
 </svg>

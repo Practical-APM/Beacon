@@ -16,8 +16,8 @@
     "clean": "rm -rf .next"
   },
   "dependencies": {
-    "@clerk/nextjs": "^6.9.6",
     "@beacon/shared": "*",
+    "@clerk/nextjs": "^6.9.6",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "framer-motion": "^12.40.0",
@@ -25,6 +25,7 @@
     "next": "^15.1.2",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
+    "simple-icons": "^16.24.0",
     "tailwind-merge": "^2.6.0"
   },
   "devDependencies": {

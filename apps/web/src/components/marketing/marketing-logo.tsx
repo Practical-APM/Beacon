@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 export function MarketingLogo({ href = '/' }: { href?: string }) {
   return (
-    <Link href={href} className="flex items-center gap-2.5 font-semibold tracking-tight text-slate-900">
+    <Link href={href} className="flex items-center gap-2.5 font-display font-semibold tracking-tight text-[var(--m-text)]">
       <Image
         src="/marketing/logo-mark.svg"
         alt=""

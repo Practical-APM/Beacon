@@ -74,10 +74,10 @@ export default function SecurityPage() {
           ].map((item) => (
             <article
               key={item.href}
-              className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm"
+              className="rounded-2xl border border-[var(--m-border)] bg-[var(--m-surface)] p-5 shadow-sm"
             >
-              <h2 className="font-semibold text-slate-900">{item.title}</h2>
-              <p className="mt-2 text-sm leading-relaxed text-slate-600">{item.body}</p>
+              <h2 className="font-semibold text-[var(--m-text)]">{item.title}</h2>
+              <p className="mt-2 text-sm leading-relaxed text-[var(--m-muted)]">{item.body}</p>
               <Link
                 href={item.href}
                 className="mt-4 inline-flex text-sm font-medium text-teal-700 hover:text-teal-800"
@@ -95,7 +95,7 @@ export default function SecurityPage() {
             <a
               key={section.id}
               href={`#${section.id}`}
-              className="rounded-full border border-slate-200 bg-white px-3 py-1.5 text-sm font-medium text-slate-700 transition hover:border-teal-200 hover:text-teal-800"
+              className="rounded-full border border-[var(--m-border)] bg-[var(--m-surface)] px-3 py-1.5 text-sm font-medium text-[var(--m-muted)] transition hover:border-[var(--m-accent)]/40 hover:text-[var(--m-accent)]"
             >
               {section.title}
             </a>
@@ -105,14 +105,14 @@ export default function SecurityPage() {
         <div className="grid gap-12 lg:grid-cols-[200px_1fr]">
           <aside className="hidden lg:block">
             <nav className="sticky top-24 space-y-1 text-sm" aria-label="Security topics">
-              <p className="mb-3 text-xs font-semibold uppercase tracking-wide text-slate-500">
+              <p className="mb-3 text-xs font-semibold uppercase tracking-wide text-[var(--m-muted)]">
                 Topics
               </p>
               {sections.map((section) => (
                 <a
                   key={section.id}
                   href={`#${section.id}`}
-                  className="block rounded-lg px-3 py-2 text-slate-600 transition hover:bg-teal-50 hover:text-teal-800"
+                  className="block rounded-lg px-3 py-2 text-[var(--m-muted)] transition hover:bg-[var(--m-accent-soft)] hover:text-[var(--m-accent)]"
                 >
                   {section.title}
                 </a>
@@ -125,13 +125,13 @@ export default function SecurityPage() {
               <article
                 key={section.id}
                 id={section.id}
-                className="scroll-mt-24 rounded-2xl border border-slate-200 bg-white p-8 shadow-sm"
+                className="scroll-mt-24 rounded-2xl border border-[var(--m-border)] bg-[var(--m-surface)] p-8 shadow-sm"
               >
-                <h2 className="text-xl font-semibold text-slate-900">{section.title}</h2>
-                <p className="mt-3 leading-relaxed text-slate-600">{section.body}</p>
+                <h2 className="text-xl font-semibold text-[var(--m-text)]">{section.title}</h2>
+                <p className="mt-3 leading-relaxed text-[var(--m-muted)]">{section.body}</p>
               </article>
             ))}
-            <p className="text-sm text-slate-600">
+            <p className="text-sm text-[var(--m-muted)]">
               Accept the{' '}
               <Link href="/legal/dpa" className="font-medium text-teal-700 hover:text-teal-800">
                 Data Processing Agreement

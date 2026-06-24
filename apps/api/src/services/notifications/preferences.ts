@@ -35,14 +35,23 @@ export async function getOrCreatePreferences(db: Database, tenantId: string, use
       .where(and(eq(notificationPreferences.tenantId, tenantId), eq(notificationPreferences.userId, userId)))
       .limit(1);
 
-    if (existing) return existing;
+    if (existing) return normalizePreferencesRow(existing);
 
     const [row] = await db
       .insert(notificationPreferences)
       .values({ tenantId, userId })
       .returning();
-    return row!;
+    return normalizePreferencesRow(row!);
   });
+}
+
+function normalizePreferencesRow(
+  row: typeof notificationPreferences.$inferSelect,
+): typeof notificationPreferences.$inferSelect & { frequency: NotificationFrequency } {
+  return {
+    ...row,
+    frequency: row.frequency as NotificationFrequency,
+  };
 }
 
 export async function getTenantNotificationSettings(

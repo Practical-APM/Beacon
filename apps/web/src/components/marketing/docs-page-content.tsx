@@ -24,16 +24,16 @@ function WalkthroughPicker({ onSelect }: { onSelect: (id: string) => void }) {
           key={guide.id}
           type="button"
           onClick={() => onSelect(guide.id)}
-          className="rounded-2xl border border-slate-200 bg-white p-5 text-left transition hover:border-teal-200 hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-600/40"
+          className="rounded-2xl border border-[var(--m-border)] bg-[var(--m-surface)] p-5 text-left transition hover:border-teal-200 hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-600/40"
         >
           <div className="flex items-center justify-between gap-2">
-            <p className="font-semibold text-slate-900">{guide.title}</p>
-            <span className="inline-flex items-center gap-1 rounded-full bg-slate-100 px-2 py-0.5 text-xs font-medium text-slate-600">
+            <p className="font-semibold text-[var(--m-text)]">{guide.title}</p>
+            <span className="inline-flex items-center gap-1 rounded-full bg-[var(--m-surface-muted)] px-2 py-0.5 text-xs font-medium text-[var(--m-muted)]">
               <Clock className="h-3 w-3" aria-hidden />
               {guide.duration}
             </span>
           </div>
-          <p className="mt-2 text-sm leading-relaxed text-slate-600">{guide.description}</p>
+          <p className="mt-2 text-sm leading-relaxed text-[var(--m-muted)]">{guide.description}</p>
           <p className="mt-3 text-xs font-medium text-teal-700">
             {guide.steps.length} steps · Start guide
           </p>
@@ -65,7 +65,7 @@ function WalkthroughViewer({
         <button
           type="button"
           onClick={onExit}
-          className="inline-flex items-center gap-1.5 font-medium text-slate-600 hover:text-teal-800"
+          className="inline-flex items-center gap-1.5 font-medium text-[var(--m-muted)] hover:text-teal-800"
         >
           <ChevronLeft className="h-4 w-4" aria-hidden />
           All guides
@@ -73,15 +73,15 @@ function WalkthroughViewer({
         <span className="text-slate-300" aria-hidden>
           /
         </span>
-        <span className="font-medium text-slate-900">{guide.title}</span>
+        <span className="font-medium text-[var(--m-text)]">{guide.title}</span>
       </div>
 
       <div className="grid gap-8 lg:grid-cols-[240px_1fr]">
         <aside className="hidden space-y-4 lg:block">
-          <div className="rounded-xl border border-slate-200 bg-white p-4">
-            <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">Progress</p>
+          <div className="rounded-xl border border-[var(--m-border)] bg-[var(--m-surface)] p-4">
+            <p className="text-xs font-semibold uppercase tracking-wide text-[var(--m-muted)]">Progress</p>
             <div
-              className="mt-3 h-1.5 overflow-hidden rounded-full bg-slate-100"
+              className="mt-3 h-1.5 overflow-hidden rounded-full bg-[var(--m-surface-muted)]"
               role="progressbar"
               aria-valuenow={progress}
               aria-valuemin={0}
@@ -89,7 +89,7 @@ function WalkthroughViewer({
             >
               <div className="h-full rounded-full bg-teal-600 transition-all" style={{ width: `${progress}%` }} />
             </div>
-            <p className="mt-2 text-xs text-slate-500">
+            <p className="mt-2 text-xs text-[var(--m-muted)]">
               Step {stepIndex + 1} of {guide.steps.length}
             </p>
           </div>
@@ -107,7 +107,7 @@ function WalkthroughViewer({
                       'flex w-full items-start gap-2 rounded-lg px-3 py-2 text-left text-sm transition',
                       current
                         ? 'bg-teal-50 font-medium text-teal-900'
-                        : 'text-slate-600 hover:bg-slate-50',
+                        : 'text-[var(--m-muted)] hover:bg-[var(--m-accent-soft)]',
                     )}
                   >
                     <span
@@ -117,7 +117,7 @@ function WalkthroughViewer({
                           ? 'bg-teal-600 text-white'
                           : current
                             ? 'border border-teal-400 text-teal-700'
-                            : 'border border-slate-200 text-slate-400',
+                            : 'border border-[var(--m-border)] text-slate-400',
                       )}
                     >
                       {done ? <Check className="h-3 w-3" aria-hidden /> : index + 1}
@@ -131,15 +131,15 @@ function WalkthroughViewer({
         </aside>
 
         <article className="min-w-0 space-y-6">
-          <div className="rounded-xl border border-slate-200 bg-white p-4 lg:hidden">
-            <div className="flex items-center justify-between gap-2 text-xs font-medium text-slate-600">
+          <div className="rounded-xl border border-[var(--m-border)] bg-[var(--m-surface)] p-4 lg:hidden">
+            <div className="flex items-center justify-between gap-2 text-xs font-medium text-[var(--m-muted)]">
               <span>
                 Step {stepIndex + 1} of {guide.steps.length}
               </span>
               <span>{progress}%</span>
             </div>
             <div
-              className="mt-2 h-1.5 overflow-hidden rounded-full bg-slate-100"
+              className="mt-2 h-1.5 overflow-hidden rounded-full bg-[var(--m-surface-muted)]"
               role="progressbar"
               aria-valuenow={progress}
               aria-valuemin={0}
@@ -150,8 +150,8 @@ function WalkthroughViewer({
           </div>
 
           <div>
-            <h2 className="text-2xl font-semibold text-slate-900">{step.title}</h2>
-            <p className="mt-3 max-w-2xl leading-relaxed text-slate-600">{step.body}</p>
+            <h2 className="text-2xl font-semibold text-[var(--m-text)]">{step.title}</h2>
+            <p className="mt-3 max-w-2xl leading-relaxed text-[var(--m-muted)]">{step.body}</p>
           </div>
 
           {step.code ? (
@@ -168,7 +168,7 @@ function WalkthroughViewer({
             />
           ) : null}
 
-          <div className="flex flex-wrap items-center gap-3 border-t border-slate-200 pt-6">
+          <div className="flex flex-wrap items-center gap-3 border-t border-[var(--m-border)] pt-6">
             {!isFirst ? (
               <button type="button" onClick={() => onStepChange(stepIndex - 1)} className="marketing-btn-secondary">
                 <ArrowLeft className="mr-2 h-4 w-4" aria-hidden />
@@ -261,7 +261,7 @@ export function DocsPageContent() {
       />
 
       <MarketingSection className="py-12" id="walkthrough-top">
-        <div className="mb-10 flex items-center gap-2 text-sm font-medium text-slate-700">
+        <div className="mb-10 flex items-center gap-2 text-sm font-medium text-[var(--m-muted)]">
           <BookOpen className="h-4 w-4 text-teal-700" aria-hidden />
           Guided walkthroughs
         </div>
@@ -274,7 +274,7 @@ export function DocsPageContent() {
               onStepChange={(index) => setWalkthrough(guide.id, index)}
               onExit={() => setWalkthrough(null)}
             />
-            <p className="mt-3 text-xs text-slate-500">
+            <p className="mt-3 text-xs text-[var(--m-muted)]">
               Tip: use ← → arrow keys to move between steps. Esc returns to all guides.
             </p>
           </>
@@ -287,14 +287,14 @@ export function DocsPageContent() {
         <div className="grid gap-12 lg:grid-cols-[220px_1fr]">
           <aside className="lg:sticky lg:top-24 lg:self-start">
             <nav className="space-y-1 text-sm" aria-label="Reference sections">
-              <p className="mb-3 text-xs font-semibold uppercase tracking-wide text-slate-500">
+              <p className="mb-3 text-xs font-semibold uppercase tracking-wide text-[var(--m-muted)]">
                 Reference
               </p>
               {DOC_REFERENCE_SECTIONS.map((section) => (
                 <a
                   key={section.id}
                   href={`#${section.id}`}
-                  className="block rounded-lg px-3 py-2 text-slate-600 transition hover:bg-white hover:text-teal-800"
+                  className="block rounded-lg px-3 py-2 text-[var(--m-muted)] transition hover:bg-white hover:text-teal-800"
                 >
                   {section.label}
                 </a>
@@ -304,8 +304,8 @@ export function DocsPageContent() {
 
           <div className="max-w-none space-y-16">
             <section id="getting-started" className="scroll-mt-24">
-              <h2 className="text-2xl font-semibold text-slate-900">Getting started</h2>
-              <p className="mt-3 text-slate-600">{DOC_REFERENCE_SECTIONS[0].summary}</p>
+              <h2 className="text-2xl font-semibold text-[var(--m-text)]">Getting started</h2>
+              <p className="mt-3 text-[var(--m-muted)]">{DOC_REFERENCE_SECTIONS[0].summary}</p>
               <div className="mt-6 flex flex-wrap gap-3">
                 <Link href="/docs?guide=try-prototype&step=0" className="marketing-btn-primary">
                   Try the prototype guide
@@ -317,8 +317,8 @@ export function DocsPageContent() {
             </section>
 
             <section id="integrations" className="scroll-mt-24">
-              <h2 className="text-2xl font-semibold text-slate-900">Integrations</h2>
-              <p className="mt-3 leading-relaxed text-slate-600">
+              <h2 className="text-2xl font-semibold text-[var(--m-text)]">Integrations</h2>
+              <p className="mt-3 leading-relaxed text-[var(--m-muted)]">
                 Connect Salesforce, Jira, Slack, and Google Calendar from{' '}
                 <Link href="/integrations" className="font-medium text-teal-700 hover:text-teal-800">
                   Connections
@@ -346,8 +346,8 @@ export function DocsPageContent() {
             </section>
 
             <section id="dashboard" className="scroll-mt-24">
-              <h2 className="text-2xl font-semibold text-slate-900">Dashboard</h2>
-              <p className="mt-3 leading-relaxed text-slate-600">
+              <h2 className="text-2xl font-semibold text-[var(--m-text)]">Dashboard</h2>
+              <p className="mt-3 leading-relaxed text-[var(--m-muted)]">
                 Portfolio metrics, peer benchmarks (when opted in), filterable risk feed, and an
                 executive print summary for leadership reviews.
               </p>
@@ -368,8 +368,8 @@ export function DocsPageContent() {
             </section>
 
             <section id="settings" className="scroll-mt-24">
-              <h2 className="text-2xl font-semibold text-slate-900">Settings</h2>
-              <p className="mt-3 leading-relaxed text-slate-600">
+              <h2 className="text-2xl font-semibold text-[var(--m-text)]">Settings</h2>
+              <p className="mt-3 leading-relaxed text-[var(--m-muted)]">
                 Language, currency, appearance, notification preferences, custom risk rules, and
                 outbound webhooks. Admins manage org-wide flags, benchmarks, and compliance from
                 the Admin tab.
@@ -380,8 +380,8 @@ export function DocsPageContent() {
             </section>
 
             <section id="privacy" className="scroll-mt-24">
-              <h2 className="text-2xl font-semibold text-slate-900">Privacy</h2>
-              <p className="mt-3 leading-relaxed text-slate-600">
+              <h2 className="text-2xl font-semibold text-[var(--m-text)]">Privacy</h2>
+              <p className="mt-3 leading-relaxed text-[var(--m-muted)]">
                 Export data, request deletion, and accept the DPA from Settings. See{' '}
                 <Link href="/security" className="font-medium text-teal-700 hover:text-teal-800">
                   Security

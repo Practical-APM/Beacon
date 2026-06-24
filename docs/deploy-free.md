@@ -139,9 +139,10 @@ curl -sS "https://YOUR-API.up.railway.app/ready"
 2. **Root Directory:** `apps/web` (required — do not deploy from repo root).
 3. **Include source files outside of the Root Directory:** enable in Project Settings → General (required for `@beacon/shared` workspace).
 4. **Node.js version:** 22 (from `apps/web/.nvmrc` and `engines.node: "22.x"`).
-5. **Install Command:** leave empty in the Vercel dashboard so `apps/web/vercel.json` controls it (`npm ci --prefix=../..`). Do **not** set a duplicate install command in the UI.
-6. Vercel picks up `apps/web/vercel.json` for install/build.
-7. Environment variables (see also `apps/web/.env.example`):
+5. **Install Command:** enable **Override** and set to `npm ci --prefix=../..` (or leave empty if `vercel.json` is picked up).
+6. **Build Command:** enable **Override** and set to `bash ./vercel-build.sh` — this builds only `@beacon/shared` + `@beacon/web` and avoids Vercel’s Turbo auto-build pulling in `@beacon/api`.
+7. **Root Directory must be `apps/web`** — if it is `apps/api` or repo root, the deploy will try to build the API and fail.
+8. Environment variables (see also `apps/web/.env.example`):
 
 | Variable | Value |
 | -------- | ----- |
@@ -264,8 +265,10 @@ Free web services sleep when idle; free Postgres expires after 90 days — OK fo
 | 401 on all API calls | Clerk keys on Vercel + Railway; user synced via webhook |
 | Workers idle | `EVENT_WORKERS_ENABLED=true` on Railway |
 | No digests / risk refresh | `RISK_SCHEDULER_ENABLED` / `NOTIFICATION_SCHEDULER_ENABLED` = `true` |
-| Build fails on Vercel | Root Directory = `apps/web`; enable **Include files outside Root Directory**; clear Install Command override in dashboard; use `npm ci --prefix=../..` from `vercel.json` |
+| Build fails on Vercel | Root Directory = `apps/web` (not `apps/api`); enable **Include files outside Root Directory**; **Override** Build Command → `bash ./vercel-build.sh` |
+| `turbo run build` / `@beacon/api#build` failed | Vercel Turbo auto-build included the API — use `vercel-build.sh` override above, not `turbo run build` |
 | `Tracker "idealTree" already exists` | Duplicate install — remove custom Install Command in Vercel UI; push latest `vercel.json`; redeploy via Git or `vercel --prod --cwd apps/web` from repo root |
+| `EBADENGINE` node 22.x | Set **Node.js Version** to **22.x** in Project Settings (Vercel default may be 24) |
 | Build fails on Railway | Check `nixpacks.toml` / Node 22; run `npx turbo build --filter=@beacon/api` locally |
 
 ---

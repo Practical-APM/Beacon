@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { Check } from 'lucide-react';
 import { MarketingPageHero } from '@/components/marketing/marketing-page-hero';
 import { MarketingSection } from '@/components/marketing/marketing-section';
 import type { Metadata } from 'next';
@@ -68,8 +69,8 @@ export default function PricingPage() {
               key={plan.name}
               className={`relative flex flex-col rounded-2xl border p-8 shadow-sm transition hover:shadow-md ${
                 plan.featured
-                  ? 'border-teal-300 bg-white ring-2 ring-teal-200 lg:-translate-y-1 lg:shadow-lg'
-                  : 'border-slate-200 bg-white'
+                  ? 'border-teal-500/50 bg-[var(--m-surface)] ring-2 ring-teal-500/25 lg:-translate-y-1 lg:shadow-lg'
+                  : 'border-[var(--m-border)] bg-[var(--m-surface)]'
               }`}
             >
               {plan.featured ? (
@@ -77,20 +78,18 @@ export default function PricingPage() {
                   Most popular
                 </span>
               ) : null}
-              <h2 className="text-lg font-semibold text-slate-900">{plan.name}</h2>
-              <p className="mt-4 text-4xl font-semibold tracking-tight text-slate-900">
+              <h2 className="font-display text-lg font-semibold text-[var(--m-text)]">{plan.name}</h2>
+              <p className="mt-4 font-display text-4xl font-semibold tracking-tight text-[var(--m-text)]">
                 {plan.price}
                 {plan.price.startsWith('$') ? (
-                  <span className="text-base font-normal text-slate-500"> / seat / mo</span>
+                  <span className="text-base font-normal text-[var(--m-muted)]"> / seat / mo</span>
                 ) : null}
               </p>
-              <p className="mt-3 text-sm leading-relaxed text-slate-600">{plan.detail}</p>
-              <ul className="mt-6 flex-1 space-y-2.5 text-sm text-slate-600">
+              <p className="mt-3 text-sm leading-relaxed text-[var(--m-muted)]">{plan.detail}</p>
+              <ul className="mt-6 flex-1 space-y-2.5 text-sm text-[var(--m-muted)]">
                 {plan.features.map((feature) => (
                   <li key={feature} className="flex gap-2.5">
-                    <span className="font-semibold text-teal-600" aria-hidden>
-                      ✓
-                    </span>
+                    <Check className="mt-0.5 h-4 w-4 shrink-0 text-[var(--m-accent)]" strokeWidth={1.5} aria-hidden />
                     {feature}
                   </li>
                 ))}
@@ -99,8 +98,8 @@ export default function PricingPage() {
                 href={plan.href}
                 className={`mt-8 block rounded-xl px-4 py-3 text-center text-sm font-semibold transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-600/40 ${
                   plan.featured
-                    ? 'bg-teal-700 text-white hover:bg-teal-800'
-                    : 'border border-slate-300 bg-white text-slate-800 hover:bg-slate-50'
+                    ? 'marketing-btn-primary text-center'
+                    : 'marketing-btn-secondary text-center'
                 }`}
               >
                 {plan.cta}
@@ -109,13 +108,13 @@ export default function PricingPage() {
           ))}
         </div>
 
-        <p className="mt-12 text-center text-sm text-slate-600">
+        <p className="mt-12 text-center text-sm text-[var(--m-muted)]">
           All plans include the same risk engine.{' '}
-          <Link href="/docs?guide=try-prototype&step=0" className="font-medium text-teal-700 hover:text-teal-800">
+          <Link href="/docs?guide=try-prototype&step=0" className="font-medium text-[var(--m-accent)] hover:underline">
             Start with the prototype guide
           </Link>{' '}
           or{' '}
-          <Link href="/faq" className="font-medium text-teal-700 hover:text-teal-800">
+          <Link href="/faq" className="font-medium text-[var(--m-accent)] hover:underline">
             read the FAQ
           </Link>{' '}
           for licensing, data handling, and support details.

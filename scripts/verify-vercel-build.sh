@@ -7,6 +7,5 @@ cd "$ROOT"
 echo "Simulating Vercel install + build for @beacon/web (from apps/web cwd)..."
 cd apps/web
 npm ci --prefix=../..
-cd ../..
-npx turbo build --filter=@beacon/web
+bash ./vercel-build.sh
 echo "Vercel build simulation passed."

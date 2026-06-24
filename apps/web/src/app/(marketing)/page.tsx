@@ -1,7 +1,6 @@
 import { BentoFeaturesSection } from '@/components/marketing/bento-features-section';
 import { HeroSection } from '@/components/marketing/hero-section';
 import { HowItWorksSection } from '@/components/marketing/how-it-works-section';
-import { LogoMarquee } from '@/components/marketing/logo-marquee';
 import { MarketingCtaSection } from '@/components/marketing/marketing-cta-section';
 import {
   IntegrationLogoGrid,
@@ -25,7 +24,6 @@ export default function MarketingHomePage() {
   return (
     <main>
       <HeroSection />
-      <LogoMarquee />
       <OutcomeSection />
       <BentoFeaturesSection />
       <ProductShowcase />
@@ -33,6 +31,7 @@ export default function MarketingHomePage() {
 
       <MarketingSection id="integrations">
         <MarketingSectionHeader
+          sectionIndex="05"
           eyebrow="Integrations"
           title="Connect the systems your team already uses"
           description="OAuth in minutes for Salesforce, Jira, Slack, and Calendar today. HubSpot, Dynamics, Linear, and more ship on the same guided setup path."

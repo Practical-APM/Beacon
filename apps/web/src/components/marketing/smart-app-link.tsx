@@ -8,7 +8,7 @@ type SmartAppLinkProps = {
   className?: string;
   signedInLabel?: string;
   signedOutLabel?: string;
-  variant?: 'primary' | 'secondary' | 'ghost';
+  variant?: 'primary' | 'secondary' | 'ghost' | 'ghostOnDark';
 };
 
 export function SmartAppLink({
@@ -25,7 +25,8 @@ export function SmartAppLink({
     primary: 'marketing-btn-primary',
     secondary: 'marketing-btn-secondary',
     ghost:
-      'inline-flex items-center rounded-xl px-4 py-3 text-sm font-medium text-teal-700 transition hover:text-teal-800',
+      'inline-flex items-center rounded-lg px-4 py-2.5 text-sm font-semibold text-[var(--m-accent)] transition hover:text-[var(--m-text)]',
+    ghostOnDark: 'marketing-btn-ghost-on-dark',
   };
 
   return (

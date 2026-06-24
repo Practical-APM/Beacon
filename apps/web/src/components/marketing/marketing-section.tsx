@@ -7,12 +7,13 @@ type MarketingSectionProps = {
   className?: string;
   innerClassName?: string;
   variant?: 'default' | 'muted' | 'dark';
+  divider?: boolean;
 };
 
 const variants = {
-  default: 'bg-[var(--m-bg)]',
-  muted: 'bg-[var(--m-surface-muted)]',
-  dark: 'bg-[var(--m-dark)] text-white',
+  default: '',
+  muted: 'bg-[var(--m-surface-muted)]/40 backdrop-blur-md',
+  dark: 'bg-[var(--m-dark)]/90 text-white backdrop-blur-md',
 };
 
 export function MarketingSection({
@@ -21,11 +22,17 @@ export function MarketingSection({
   className,
   innerClassName,
   variant = 'default',
+  divider = true,
 }: MarketingSectionProps) {
   return (
     <section
       id={id}
-      className={cn('relative scroll-mt-20 py-20 sm:py-28', variants[variant], className)}
+      className={cn(
+        'relative scroll-mt-20 py-20 sm:py-28',
+        divider && 'marketing-section-divider',
+        variants[variant],
+        className,
+      )}
     >
       <div className={cn('mx-auto w-full max-w-6xl px-5 sm:px-6 lg:px-8', innerClassName)}>
         {children}
@@ -35,12 +42,14 @@ export function MarketingSection({
 }
 
 export function MarketingSectionHeader({
+  sectionIndex,
   eyebrow,
   title,
   description,
   align = 'left',
   dark = false,
 }: {
+  sectionIndex?: string;
   eyebrow?: string;
   title: string;
   description?: string;
@@ -49,20 +58,16 @@ export function MarketingSectionHeader({
 }) {
   return (
     <div className={cn('max-w-3xl', align === 'center' && 'mx-auto text-center')}>
-      {eyebrow ? (
-        <p
-          className={cn(
-            'text-xs font-semibold uppercase tracking-[0.14em]',
-            dark ? 'text-teal-300' : 'text-teal-700',
-          )}
-        >
-          {eyebrow}
+      {sectionIndex || eyebrow ? (
+        <p className={cn('marketing-section-label', align === 'center' && 'justify-center')}>
+          {sectionIndex ? <span className="marketing-section-index">§ {sectionIndex}</span> : null}
+          {eyebrow ? <span>{eyebrow}</span> : null}
         </p>
       ) : null}
       <h2
         className={cn(
-          'mt-3 text-3xl font-semibold tracking-tight sm:text-4xl',
-          dark ? 'text-white' : 'text-slate-900',
+          'mt-4 font-display text-3xl font-semibold tracking-[-0.03em] sm:text-4xl lg:text-[2.75rem] lg:leading-[1.1]',
+          dark ? 'text-white' : 'text-[var(--m-text)]',
         )}
       >
         {title}
@@ -70,8 +75,9 @@ export function MarketingSectionHeader({
       {description ? (
         <p
           className={cn(
-            'mt-4 text-lg leading-relaxed',
-            dark ? 'text-slate-300' : 'text-slate-600',
+            'mt-4 max-w-2xl text-base leading-relaxed sm:text-lg',
+            dark ? 'text-slate-400' : 'text-[var(--m-muted)]',
+            align === 'center' && 'mx-auto',
           )}
         >
           {description}

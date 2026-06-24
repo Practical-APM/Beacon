@@ -14,6 +14,7 @@
   "scripts": {
     "dev": "turbo dev",
     "build": "turbo build",
+    "build:vercel-web": "npm run build --workspace=@beacon/shared && npm run build --workspace=@beacon/web",
     "lint": "turbo lint",
     "typecheck": "turbo typecheck",
     "test": "turbo test",
