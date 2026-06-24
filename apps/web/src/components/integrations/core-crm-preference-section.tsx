@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { CoreCrmPicker, type CoreCrmPreferenceState } from '@/components/integrations/core-crm-picker';
 import { FeedbackBanner } from '@/components/feedback-banner';
 
@@ -20,7 +20,7 @@ export function CoreCrmPreferenceSection({
   const [message, setMessage] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
 
-  async function refresh() {
+  const refresh = useCallback(async () => {
     setLoading(true);
     try {
       const data = (await apiFetch('/v1/integrations/core-crm/preference')) as CoreCrmPreferenceState;
@@ -31,11 +31,11 @@ export function CoreCrmPreferenceSection({
     } finally {
       setLoading(false);
     }
-  }
+  }, [apiFetch]);
 
   useEffect(() => {
     void refresh();
-  }, []);
+  }, [refresh]);
 
   async function savePreference(coreCrmId: string) {
     if (!isAdmin || preference?.locked) return;

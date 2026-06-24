@@ -73,7 +73,7 @@ function coreCrmApiPath(coreCrmId: string): string | null {
 }
 
 export function IntegrationsContent() {
-  const { me, activeTenantId, authDevMode } = useAppSession();
+  const { activeTenantId, authDevMode } = useAppSession();
   const membership = useActiveMembership();
   const searchParams = useSearchParams();
   const [status, setStatus] = useState<IntegrationStatus | null>(null);
@@ -87,10 +87,6 @@ export function IntegrationsContent() {
     null,
   );
   const [slackStatus, setSlackStatus] = useState<{ connected: boolean; status: string } | null>(null);
-  const [googleCalendarStatus, setGoogleCalendarStatus] = useState<{
-    connected: boolean;
-    status: string;
-  } | null>(null);
   const [loading, setLoading] = useState(true);
   const [message, setMessage] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
@@ -118,7 +114,7 @@ export function IntegrationsContent() {
     if (!activeTenantId) return;
     setLoading(true);
     try {
-      const [coreCrmReadiness, jira, linear, slack, googleCalendar, catalog] = await Promise.all([
+      const [coreCrmReadiness, jira, linear, slack, catalog] = await Promise.all([
         apiFetch('/v1/integrations/core-crm/readiness') as Promise<{
           coreCrmId: string;
           coreCrmName?: string;
@@ -133,10 +129,6 @@ export function IntegrationsContent() {
         apiFetch('/v1/integrations/jira/status') as Promise<{ connected: boolean; status: string }>,
         apiFetch('/v1/integrations/linear/status') as Promise<{ connected: boolean; status: string }>,
         apiFetch('/v1/integrations/slack/status') as Promise<{ connected: boolean; status: string }>,
-        apiFetch('/v1/integrations/google-calendar/status') as Promise<{
-          connected: boolean;
-          status: string;
-        }>,
         apiFetch('/v1/integrations/catalog') as Promise<{ categories: CatalogCategory[] }>,
       ]);
       const apiPath = coreCrmApiPath(coreCrmReadiness.coreCrmId);
@@ -148,7 +140,6 @@ export function IntegrationsContent() {
       setJiraStatus(jira);
       setLinearStatus(linear);
       setSlackStatus(slack);
-      setGoogleCalendarStatus(googleCalendar);
       setCatalogCategories(catalog.categories ?? []);
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Failed to load integration status');

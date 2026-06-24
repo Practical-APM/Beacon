@@ -18,7 +18,6 @@ import {
   coreCrmOrgChangeWarning,
 } from '@/lib/integration-dialogs';
 import {
-  advanceSetup,
   bootstrapAfterConnect,
   fetchCoreCrmPreference,
   fetchSetupState,
@@ -56,7 +55,7 @@ const PHASES: Array<{ id: SetupPhase; title: string; detail: string }> = [
 export function OnboardingWizard() {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const { me, activeTenantId, authDevMode } = useAppSession();
+  const { authDevMode } = useAppSession();
   const membership = useActiveMembership();
   const [setupState, setSetupState] = useState<SetupState | null>(null);
   const [crmPreference, setCrmPreference] = useState<CoreCrmPreferenceState | null>(null);
@@ -145,7 +144,7 @@ export function OnboardingWizard() {
     }
   }, [router, setupState?.phase]);
 
-  async function connectCoreCrm() {
+  const connectCoreCrm = useCallback(async () => {
     setError(null);
     setMessage(null);
     setBusy(true);
@@ -173,9 +172,9 @@ export function OnboardingWizard() {
     } finally {
       setBusy(false);
     }
-  }
+  }, [apiFetch, crmPreference, refreshSetup, selectedCrmId, setupState?.coreCrmId, setupState?.coreCrmName]);
 
-  async function connectOptional(catalogId: 'jira' | 'slack') {
+  const connectOptional = useCallback(async (catalogId: 'jira' | 'slack') => {
     setError(null);
     setMessage(null);
     setBusy(true);
@@ -191,11 +190,11 @@ export function OnboardingWizard() {
     } finally {
       setBusy(false);
     }
-  }
+  }, [apiFetch, refreshSetup]);
 
-  async function skipToDashboard() {
+  const skipToDashboard = useCallback(() => {
     router.push('/dashboard');
-  }
+  }, [router]);
 
   async function completeDemoSetup() {
     setError(null);
@@ -342,7 +341,7 @@ export function OnboardingWizard() {
           </div>
         );
     }
-  }, [busy, crmPreference, isAdmin, selectedCrmId, setupState]);
+  }, [busy, connectCoreCrm, connectOptional, crmPreference, isAdmin, selectedCrmId, setupState, skipToDashboard]);
 
   return (
     <div className="space-y-8">

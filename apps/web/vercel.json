@@ -3,5 +3,10 @@
   "framework": "nextjs",
   "installCommand": "npm ci --prefix=../..",
   "buildCommand": "bash ./vercel-build.sh",
-  "regions": ["iad1"]
+  "regions": ["iad1"],
+  "build": {
+    "env": {
+      "NODE_VERSION": "22"
+    }
+  }
 }
