@@ -136,13 +136,12 @@ curl -sS "https://YOUR-API.up.railway.app/ready"
 ## 5. Web (Vercel)
 
 1. **Add New Project** → import the same GitHub repo.
-2. **Root Directory:** `apps/web` (required — do not deploy from repo root).
+2. **Root Directory:** `apps/web` (required — not repo root, not `apps/api`).
 3. **Include source files outside of the Root Directory:** enable in Project Settings → General (required for `@beacon/shared` workspace).
 4. **Node.js version:** 22 (from `apps/web/.nvmrc` and `engines.node: "22.x"`).
-5. **Install Command:** enable **Override** and set to `npm ci --prefix=../..` (or leave empty if `vercel.json` is picked up).
-6. **Build Command:** enable **Override** and set to `bash ./vercel-build.sh` (or `make build` — both work from `apps/web`). Do **not** use root `make build`; there is no Makefile in the repo root that Vercel can see when Root Directory is `apps/web`.
-7. **Root Directory must be `apps/web`** — if it is `apps/api` or repo root, the deploy will try to build the API and fail.
-8. Environment variables (see also `apps/web/.env.example`):
+5. **Install Command:** enable **Override** → `npm ci --prefix=../..`
+6. **Build Command:** enable **Override** → `npm run vercel-build` (or `make build`). Logs must show `=== Beacon web Vercel build` — **not** `Packages in scope: @beacon/api`.
+7. Environment variables (see also `apps/web/.env.example`):
 
 | Variable | Value |
 | -------- | ----- |
@@ -265,8 +264,9 @@ Free web services sleep when idle; free Postgres expires after 90 days — OK fo
 | 401 on all API calls | Clerk keys on Vercel + Railway; user synced via webhook |
 | Workers idle | `EVENT_WORKERS_ENABLED=true` on Railway |
 | No digests / risk refresh | `RISK_SCHEDULER_ENABLED` / `NOTIFICATION_SCHEDULER_ENABLED` = `true` |
-| Build fails on Vercel | Root Directory = `apps/web` (not `apps/api`); enable **Include files outside Root Directory**; **Override** Build Command → `bash ./vercel-build.sh` or `make build` (uses `apps/web/Makefile`) |
-| `No rule to make target 'build'` | Build Command pointed at repo-root `make build` while Root Directory is `apps/web` — use `bash ./vercel-build.sh` or `make build` from `apps/web` |
+| Build fails on Vercel | Root Directory = `apps/web` (not `apps/api`); enable **Include files outside Root Directory**; **Override** Build Command → `npm run vercel-build` |
+| `Packages in scope: @beacon/api` in Vercel logs | Wrong Root Directory (`apps/api` or repo root) — web must use `apps/web`. API deploys on **Railway** (`railway.toml`), not Vercel |
+| `No rule to make target 'build'` | Build Command pointed at repo-root `make build` while Root Directory is `apps/web` — use `npm run vercel-build` or `make build` from `apps/web` |
 | `turbo run build` / `@beacon/api#build` failed | Vercel Turbo auto-build included the API — use `vercel-build.sh` override above, not `turbo run build` |
 | `Tracker "idealTree" already exists` | Duplicate install — remove custom Install Command in Vercel UI; push latest `vercel.json`; redeploy via Git or `vercel --prod --cwd apps/web` from repo root |
 | `EBADENGINE` node 22.x | Set **Node.js Version** to **22.x** in Project Settings (Vercel default may be 24) |

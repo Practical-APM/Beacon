@@ -2,7 +2,7 @@
 
 # Vercel may run `make build` with Root Directory = apps/web (no parent Makefile).
 build:
-	bash ./vercel-build.sh
+	npm run vercel-build
 
 verify-vercel:
-	bash ./vercel-build.sh
+	npm run vercel-build

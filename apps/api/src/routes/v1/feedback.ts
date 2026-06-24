@@ -27,14 +27,19 @@ export const feedbackRoutes = new Hono();
 
 feedbackRoutes.post('/feedback', requireAuth, requireRole('operational'), async (c) => {
   const auth = getAuth(c);
-  const body = submitSchema.safeParse(await c.req.json());
-  if (!body.success) return problemResponse(c, badRequest(body.error.message));
+  const parsed = submitSchema.safeParse(await c.req.json());
+  if (!parsed.success) return problemResponse(c, badRequest(parsed.error.message));
 
   const { db } = createDb(env.DATABASE_URL);
-  await getProject(db, auth.tenantId, auth, body.data.projectId);
+  await getProject(db, auth.tenantId, auth, parsed.data.projectId);
 
   try {
-    const feedback = await submitRecommendationFeedback(db, auth.tenantId, auth.userId, body.data);
+    const feedback = await submitRecommendationFeedback(
+      db,
+      auth.tenantId,
+      auth.userId,
+      parsed.data,
+    );
     await recordAuditEvent(db, {
       tenantId: auth.tenantId,
       userId: auth.userId,

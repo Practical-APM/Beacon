@@ -1,5 +1,10 @@
 {
   "$schema": "https://turbo.build/schema.json",
+  "globalDependencies": [
+    "package-lock.json",
+    "packages/db/src/schema/**",
+    "packages/shared/**"
+  ],
   "tasks": {
     "build": {
       "dependsOn": ["^build"],

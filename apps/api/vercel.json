@@ -1,0 +1,4 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "buildCommand": "echo 'Beacon API runs on Railway, not Vercel. Create a separate Vercel project with Root Directory = apps/web for the Next.js site. See docs/deploy-free.md.' && exit 1"
+}
